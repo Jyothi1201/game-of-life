@@ -34,12 +34,12 @@ stages {
 //}
    }
  
- // stage('Unit Test Results') {
-   //   steps {
-     // junit '**/target/surefire-reports/TEST-*.xml'
+  stage('Unit Test Results') {
+      steps {
+      junit '**/target/surefire-reports/TEST-*.xml'
       
-      //}
- //}
+      }
+ }
 stage('Sonarqube') {
    environment {
        scannerHome = tool 'sonarqube'
