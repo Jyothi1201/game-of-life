@@ -55,7 +55,7 @@ stage('Sonarqube') {
 }
      stage('Artifact upload') {
       steps {
-       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
+       nexusPublisher nexusInstanceId: '123456', nexusRepositoryId: 'pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
       }
      }
     //stage('Deploy War') {
