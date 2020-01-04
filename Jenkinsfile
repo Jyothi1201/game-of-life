@@ -12,8 +12,7 @@ stages {
 
       // Get some code from a GitHub repository
 
-      git 'https://github.com/anilkumarpuli/game-of-life.git'
-
+      git 'https://github.com/Jyothi1201/game-of-life.git'
       // Get the Maven tool.
      
  // ** NOTE: This 'M3' Maven tool must be configured
@@ -41,19 +40,19 @@ stages {
       
       //}
  //}
-// stage('Sonarqube') {
-  //  environment {
-    //    scannerHome = tool 'sonarqube'
-   // }
-    //steps {
-      //  withSonarQubeEnv('sonarqube') {
-        //    sh "${scannerHome}/bin/sonar-scanner"
-        //}
-        //timeout(time: 10, unit: 'MINUTES') {
-          //  waitForQualityGate abortPipeline: true
-       // }
-   // }
-//}
+stage('Sonarqube') {
+   environment {
+       scannerHome = tool 'sonarqube'
+    }
+    steps {
+        withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+       }
+    }
+}
      stage('Artifact upload') {
       steps {
        nexusPublisher nexusInstanceId: '123456', nexusRepositoryId: 'pipeline', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
