@@ -58,11 +58,11 @@ stage('Sonarqube') {
        nexusPublisher nexusInstanceId: '123', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]      
       }
      }
-    //stage('Deploy War') {
-      //steps {
-        //sh label: '', script: 'ansible-playbook deploy.yml'
-      //}
- //}
+    stage('Deploy War') {
+      steps {
+        sh label: '', script: 'ansible-playbook deploy.yml'
+      }
+ }
 }
 //post {
     //    success {
