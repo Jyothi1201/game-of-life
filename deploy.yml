@@ -2,8 +2,6 @@
 - hosts: webservers
   become: true
   tasks:
-  - name: create user
-     user: name=tomcat password=tomcat shell=/bin/bash
   - name: Stop Tomcat
     shell: /etc/init.d/tomcatstop
   - name: Clean the existing war file
