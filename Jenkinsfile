@@ -13,7 +13,8 @@ stages {
       // Get some code from a GitHub repository
 
       git 'https://github.com/Jyothi1201/game-of-life.git'
-      // Get the Maven tool.
+     
+         // Get the Maven tool.
      
  // ** NOTE: This 'M3' Maven tool must be configured
  
